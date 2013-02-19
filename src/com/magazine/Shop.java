@@ -3,6 +3,8 @@ package com.magazine;
 import java.io.Serializable;
 import java.util.List;
 
+import com.magazine.storage.MagazineStorage;
+
 public class Shop implements Serializable {
 	
 	private static final long serialVersionUID = 1851799648009659538L;
@@ -10,6 +12,21 @@ public class Shop implements Serializable {
 	private Long id;
 	private String name;
 	private List<Product> products;
+	
+	public Shop() {
+		setId(MagazineStorage.instance().registerShop());
+	}
+	
+	public Shop(String name, List<Product> products) {
+		this();
+		this.name = name;
+		this.products = products;
+	}
+	
+	public Shop register(Long id) {
+		this.id = id;
+		return this;
+	}
 	
 	public Long getId() {
 		return id;

@@ -13,11 +13,9 @@ public interface IShopWebService {
 	
 	Order getOrder(Long id);
 	
-	void sendSomething(Product product);
-	
-	Shop getProductShop(Product product);
+	void registerOrderOneWay(List<Product> products, String comment);
 	
 	List<Order> getAllOrders();
 	
-	Order registerOrder(List<Product> products, Shop shop);
+	Order registerOrder(List<Product> products, String comment);
 }

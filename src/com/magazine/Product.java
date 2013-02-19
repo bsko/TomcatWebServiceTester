@@ -3,6 +3,8 @@ package com.magazine;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.magazine.storage.MagazineStorage;
+
 public class Product implements Serializable {
 	
 	private static final long serialVersionUID = -6356076553378879089L;
@@ -13,6 +15,23 @@ public class Product implements Serializable {
 	private Date salesStart;
 	private Date salesEnd;
 	private Shop shop;
+	
+	public Product() {
+		setId(MagazineStorage.instance().registerProduct());
+	}
+	
+	public Product(String name, String comments, Date salesStart, Date salesEnd) {
+		this();
+		this.name = name;
+		this.comments = comments;
+		this.salesStart = salesStart;
+		this.salesEnd = salesEnd;
+	}
+	
+	public Product register(Long id) {
+		this.id = id;
+		return this;
+	}
 	
 	public Long getId() {
 		return id;
