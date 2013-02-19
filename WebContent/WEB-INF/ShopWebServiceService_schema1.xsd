@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://magazine.com/" xmlns:tns="http://magazine.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="getAllOrders" type="tns:getAllOrders"/>
+
+  <xs:element name="getAllOrdersResponse" type="tns:getAllOrdersResponse"/>
+
+  <xs:element name="getOrder" type="tns:getOrder"/>
+
+  <xs:element name="getOrderResponse" type="tns:getOrderResponse"/>
+
+  <xs:element name="getProduct" type="tns:getProduct"/>
+
+  <xs:element name="getProductResponse" type="tns:getProductResponse"/>
+
+  <xs:element name="getProductShop" type="tns:getProductShop"/>
+
+  <xs:element name="getProductShopResponse" type="tns:getProductShopResponse"/>
+
+  <xs:element name="getShop" type="tns:getShop"/>
+
+  <xs:element name="getShopResponse" type="tns:getShopResponse"/>
+
+  <xs:element name="registerOrder" type="tns:registerOrder"/>
+
+  <xs:element name="registerOrderResponse" type="tns:registerOrderResponse"/>
+
+  <xs:element name="sendSomething" type="tns:sendSomething"/>
+
+  <xs:complexType name="sendSomething">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:product" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="product">
+    <xs:sequence>
+      <xs:element name="comments" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="salesEnd" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="salesStart" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="shop" type="tns:shop" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="shop">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="products" type="tns:product" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllOrders">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllOrdersResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="order">
+    <xs:sequence>
+      <xs:element name="deliveryDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="deliveryRegisterDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="products" type="tns:product" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProductShop">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:product" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProductShopResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:shop" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registerOrder">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:product" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="arg1" type="tns:shop" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registerOrderResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:order" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getShop">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getShopResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:shop" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOrder">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOrderResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:order" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProduct">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProductResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:product" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
