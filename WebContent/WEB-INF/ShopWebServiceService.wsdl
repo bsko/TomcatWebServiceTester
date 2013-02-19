@@ -24,12 +24,6 @@
   <message name="getOrderResponse">
     <part name="parameters" element="tns:getOrderResponse"/>
   </message>
-  <message name="getProductShop">
-    <part name="parameters" element="tns:getProductShop"/>
-  </message>
-  <message name="getProductShopResponse">
-    <part name="parameters" element="tns:getProductShopResponse"/>
-  </message>
   <message name="getAllOrders">
     <part name="parameters" element="tns:getAllOrders"/>
   </message>
@@ -42,8 +36,8 @@
   <message name="registerOrderResponse">
     <part name="parameters" element="tns:registerOrderResponse"/>
   </message>
-  <message name="sendSomething">
-    <part name="parameters" element="tns:sendSomething"/>
+  <message name="registerOrderOneWay">
+    <part name="parameters" element="tns:registerOrderOneWay"/>
   </message>
   <portType name="ShopWebService">
     <operation name="getShop">
@@ -58,10 +52,6 @@
       <input message="tns:getOrder"/>
       <output message="tns:getOrderResponse"/>
     </operation>
-    <operation name="getProductShop">
-      <input message="tns:getProductShop"/>
-      <output message="tns:getProductShopResponse"/>
-    </operation>
     <operation name="getAllOrders">
       <input message="tns:getAllOrders"/>
       <output message="tns:getAllOrdersResponse"/>
@@ -70,8 +60,8 @@
       <input message="tns:registerOrder"/>
       <output message="tns:registerOrderResponse"/>
     </operation>
-    <operation name="sendSomething">
-      <input message="tns:sendSomething"/>
+    <operation name="registerOrderOneWay">
+      <input message="tns:registerOrderOneWay"/>
     </operation>
   </portType>
   <binding name="ShopWebServicePortBinding" type="tns:ShopWebService">
@@ -103,15 +93,6 @@
         <soap:body use="literal"/>
       </output>
     </operation>
-    <operation name="getProductShop">
-      <soap:operation soapAction=""/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
-    </operation>
     <operation name="getAllOrders">
       <soap:operation soapAction=""/>
       <input>
@@ -130,7 +111,7 @@
         <soap:body use="literal"/>
       </output>
     </operation>
-    <operation name="sendSomething">
+    <operation name="registerOrderOneWay">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>

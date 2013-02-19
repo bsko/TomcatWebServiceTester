@@ -13,23 +13,33 @@
 
   <xs:element name="getProductResponse" type="tns:getProductResponse"/>
 
-  <xs:element name="getProductShop" type="tns:getProductShop"/>
-
-  <xs:element name="getProductShopResponse" type="tns:getProductShopResponse"/>
-
   <xs:element name="getShop" type="tns:getShop"/>
 
   <xs:element name="getShopResponse" type="tns:getShopResponse"/>
 
   <xs:element name="registerOrder" type="tns:registerOrder"/>
 
+  <xs:element name="registerOrderOneWay" type="tns:registerOrderOneWay"/>
+
   <xs:element name="registerOrderResponse" type="tns:registerOrderResponse"/>
 
-  <xs:element name="sendSomething" type="tns:sendSomething"/>
+  <xs:complexType name="getAllOrders">
+    <xs:sequence/>
+  </xs:complexType>
 
-  <xs:complexType name="sendSomething">
+  <xs:complexType name="getAllOrdersResponse">
     <xs:sequence>
-      <xs:element name="arg0" type="tns:product" minOccurs="0"/>
+      <xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="order">
+    <xs:sequence>
+      <xs:element name="comments" type="xs:string" minOccurs="0"/>
+      <xs:element name="deliveryDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="deliveryRegisterDate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="products" type="tns:product" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -52,41 +62,17 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="getAllOrders">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="getAllOrdersResponse">
+  <xs:complexType name="registerOrderOneWay">
     <xs:sequence>
-      <xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="order">
-    <xs:sequence>
-      <xs:element name="deliveryDate" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="deliveryRegisterDate" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="id" type="xs:long" minOccurs="0"/>
-      <xs:element name="products" type="tns:product" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getProductShop">
-    <xs:sequence>
-      <xs:element name="arg0" type="tns:product" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getProductShopResponse">
-    <xs:sequence>
-      <xs:element name="return" type="tns:shop" minOccurs="0"/>
+      <xs:element name="arg0" type="tns:product" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="arg1" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="registerOrder">
     <xs:sequence>
       <xs:element name="arg0" type="tns:product" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="arg1" type="tns:shop" minOccurs="0"/>
+      <xs:element name="arg1" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 
