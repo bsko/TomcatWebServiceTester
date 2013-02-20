@@ -8,9 +8,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
+import javax.xml.ws.WebServiceProvider;
+
 import com.magazine.Order;
 import com.magazine.Product;
 
+@WebServiceProvider
 @Path("rest/orders")
 public class OrderResource extends Resource {
 	

@@ -6,8 +6,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
+import javax.xml.ws.WebServiceProvider;
+
 import com.magazine.Shop;
 
+@WebServiceProvider
 @Path("rest/shops")
 public class ShopResource extends Resource {
 	
