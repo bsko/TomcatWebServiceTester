@@ -17,14 +17,9 @@ public class ProductResource extends Resource {
 	UriInfo info;
 	
 	@GET
-	public List<Product> getProducts() {
-		return null;
-	}
-	
-	@GET
 	@Path("{id}")
 	public Product getProduct(@PathParam("id") Long id) {
-		return null;
+		return storage.getProduct(id);
 	}
 	
 	@POST

@@ -9,20 +9,15 @@ import javax.ws.rs.core.UriInfo;
 import com.magazine.Shop;
 
 @Path("rest/shops")
-public class ShopResource {
+public class ShopResource extends Resource {
 	
 	@Context
 	UriInfo info;
 	
 	@GET
-	public List<Shop> getShops() {
-		return null;
-	}
-	
-	@GET
 	@Path("{id}")
-	public Shop getOrder(@PathParam("id") Long id) {
-		return null;
+	public Shop getShop(@PathParam("id") Long id) {
+		return storage.getShop(id);
 	}
 
 }

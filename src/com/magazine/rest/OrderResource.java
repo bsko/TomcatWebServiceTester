@@ -19,13 +19,13 @@ public class OrderResource extends Resource {
 	
 	@GET
 	public List<Order> getOrders() {
-		return null;
+		return storage.getAllOrders();
 	}
 	
 	@GET
 	@Path("{id}")
 	public Order getOrder(@PathParam("id") Long id) {
-		return null;
+		return storage.getOrder(id);
 	}
 	
 	@POST
